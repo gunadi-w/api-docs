@@ -1,0 +1,287 @@
+post:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - create
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - paymentType
+            - supplierId
+            - date
+            - requestApprovalTo
+          properties:
+            paymentType:
+              type: string
+            supplierId:
+              type: integer
+            supplierName:
+              type: string
+            date:
+              type: string
+            requestApprovalTo:
+              type: integer
+            totalInvoiceAmount:
+              type: integer
+            totalDownPaymentAmount:
+              type: integer
+            totalReturnAmount:
+              type: integer
+            totalOtherAmount:
+              type: integer
+            totalAmount:
+              type: integer
+            notes:
+              type: string
+            invoices:
+              type: array
+              items:
+                type: object
+                required:
+                  - id
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            downPayments:
+              type: array
+              items:
+                type: object
+                required:
+                  - id
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            returns:
+              type: array
+              items:
+                type: object
+                required:
+                  - id
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            others:
+              type: array
+              items:
+                type: object
+                required:
+                  - coaId
+                  - amount
+                properties:
+                  coaId:
+                    type: integer
+                  notes:
+                    type: string
+                  amount:
+                    type: integer
+                  allocationId:
+                    type: integer
+          example:
+            paymentType: 'cash'
+            supplierId: 1
+            supplierName: 'Supplier'
+            date: '2022-12-12 12:36:14'
+            requestApprovalTo: 1
+            totalInvoiceAmount: 100000
+            totalDownPaymentAmount: 20000
+            totalReturnAmount: 0
+            totalOtherAmount: 5000
+            totalAmount: 75000
+            notes: 'example form note'
+            invoices:
+              - id: 2
+                amount: 100000
+            downPayments:
+              - id: 2
+                amount: 20000
+            returns: []
+            others:
+              - coaId: 160
+                amount: 5000
+                notes: 'beban'
+                allocationId: 1
+              - coaId: 87
+                amount: 10000
+                notes: 'pendapatan'
+                allocationId: 1
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  paymentType:
+                    type: string
+                  supplierId:
+                    type: integer
+                  supplierName:
+                    type: string
+                  amount:
+                    type: integer
+                  invoices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                  downPayments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                  returns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                  others:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        chartOfAccountId:
+                          type: integer
+                        allocationId:
+                          type: integer
+                        amount:
+                          type: integer
+                        notes:
+                          type: string
+                  form:
+                    type: object
+                    properties:
+                      done:
+                        type: boolean
+                      approvalStatus:
+                        type: integer
+                      id:
+                        type: integer
+                      branchId:
+                        type: integer
+                      date:
+                        type: string
+                      number:
+                        type: string
+                      notes:
+                        type: string
+                      createdBy:
+                        type: integer
+                      updatedBy:
+                        type: integer
+                      incrementNumber:
+                        type: integer
+                      incrementGroup:
+                        type: integer
+                      formableId:
+                        type: integer
+                      formableType:
+                        type: string
+                      requestApprovalTo:
+                        type: integer
+          example:
+            data:
+              id: 8
+              paymentType: cash
+              supplierId: 1
+              supplierName: Supplier
+              amount: 75000
+              invoices:
+              - id: 3
+                purchasePaymentOrderId: 8
+                available: 879900000
+                amount: 100000
+                referenceableId: 2
+                referenceableType: PurchaseInvoice
+              downPayments:
+              - id: 4
+                purchasePaymentOrderId: 8
+                available: 5000000
+                amount: 20000
+                referenceableId: 2
+                referenceableType: PurchaseDownPayment
+              returns: []
+              others:
+              - id: 5
+                purchasePaymentOrderId: 8
+                chartOfAccountId: 160
+                allocationId: 1
+                amount: 5000
+                notes: beban
+              - id: 6
+                purchasePaymentOrderId: 8
+                chartOfAccountId: 87
+                allocationId: 1
+                amount: 10000
+                notes: pendapatan
+              form:
+                done: false
+                approvalStatus: 0
+                id: 671
+                branchId: 1
+                date: '2022-12-12T04:36:14.000Z'
+                number: PP2212003
+                notes: example form note
+                createdBy: 1
+                updatedBy: 1
+                incrementNumber: 3
+                incrementGroup: 202212
+                formableId: 8
+                formableType: PurchasePaymentOrder
+                requestApprovalTo: 1

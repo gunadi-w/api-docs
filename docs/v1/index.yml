@@ -175,3 +175,19 @@ paths:
     $ref: sales/sales-return/sales-return_approval_send.yaml
   /sales/sales-return/approve:
     $ref: sales/sales-return/sales-return_approve_by_email.yaml
+  /purchase/return:
+    $ref: purchase/return/return.yaml
+  /purchase/return/{id}:
+    $ref: purchase/return/return_id.yaml
+  /purchase/return/{id}/approve:
+    $ref: purchase/return/return_id_approve.yaml
+  /purchase/return/{id}/reject:
+    $ref: purchase/return/return_id_reject.yaml
+  /purchase/return/{id}/cancellation-approve:
+    $ref: purchase/return/return_id_cancellation_approve.yaml
+  /purchase/return/{id}/cancellation-reject:
+    $ref: purchase/return/return_id_cancellation_reject.yaml
+  /purchase/return/{id}/histories:
+    $ref: purchase/return/return_id_histories.yaml
+  /purchase/return/approval/send:
+    $ref: purchase/return/return_approval_send.yaml

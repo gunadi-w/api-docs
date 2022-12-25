@@ -1,0 +1,100 @@
+get:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - references
+  parameters:
+    - name: supplierId
+      in: path
+      required: true
+      description: supplier id
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  invoices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        number:
+                          type: string
+                        notes:
+                          type: string
+                        available:
+                          type: number
+                  downPayments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        number:
+                          type: string
+                        notes:
+                          type: string
+                        available:
+                          type: number
+                  returns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        number:
+                          type: string
+                        notes:
+                          type: string
+                        available:
+                          type: number
+          example:
+            data:
+              invoices:
+                - id: 2
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PI22060001'
+                  notes: ''
+                  available: 879900000
+                - id: 3
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PI22060002'
+                  notes: ''
+                  available: 11000000
+              downPayments:
+                - id: 2
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PDP22060001'
+                  notes: ''
+                  available: 5000000
+                - id: 3
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PDP22060002'
+                  notes: ''
+                  available: 5000000
+              returns:
+                - id: 2
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PRETURN22060001'
+                  notes: ''
+                  available: 30000
+                - id: 3
+                  date: '2022-06-19T04:21:10.000Z'
+                  number: 'PRETURN22060002'
+                  notes: ''
+                  available: 20000

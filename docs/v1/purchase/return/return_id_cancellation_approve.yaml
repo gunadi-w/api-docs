@@ -1,0 +1,94 @@
+post:
+  tags:
+    - Purchase Return
+  summary: purchase return - cancellation approve
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              purchaseInvoiceId:
+                type: integer
+              warehouseId:
+                type: integer
+              supplierId:
+                type: integer
+              supplierName:
+                type: string
+              supplierAddress:
+                type: string
+              supplierPhone:
+                type: string
+              amount:
+                type: integer
+              tax:
+                type: integer
+              form:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  branchId:
+                    type: integer
+                  date:
+                    type: string
+                  number:
+                    type: string
+                  editedNumber:
+                    type: string
+                  notes:
+                    type: string
+                  editedNotes:
+                    type: string
+                  createdBy:
+                    type: integer
+                  updatedBy:
+                    type: integer
+                  done:
+                    type: boolean
+                  incrementNumber:
+                    type: integer
+                  incrementGroup:
+                    type: integer
+                  formableId:
+                    type: integer
+                  formableType:
+                    type: string
+                  requestApprovalTo:
+                    type: integer
+                  approvalBy:
+                    type: integer
+                  approvalAt:
+                    type: string
+                  approvalReason:
+                    type: string
+                  approvalStatus:
+                    type: integer
+                  requestCancellationTo:
+                    type: integer
+                  requestCancellationBy:
+                    type: integer
+                  requestCancellationAt:
+                    type: string
+                  requestCancellationReason:
+                    type: string
+                  cancellationApprovalAt:
+                    type: string
+                  cancellationApprovalBy:
+                    type: integer
+                  cancellationApprovalReason:
+                    type: string
+                  cancellationStatus:
+                    type: integer
