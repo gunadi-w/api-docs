@@ -189,5 +189,7 @@ paths:
     $ref: purchase/return/return_id_cancellation_reject.yaml
   /purchase/return/{id}/histories:
     $ref: purchase/return/return_id_histories.yaml
+  /purchase/return/approval:
+    $ref: purchase/return/return_approval.yaml
   /purchase/return/approval/send:
     $ref: purchase/return/return_approval_send.yaml

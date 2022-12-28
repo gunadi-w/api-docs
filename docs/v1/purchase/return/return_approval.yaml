@@ -1,0 +1,196 @@
+get:
+  tags:
+    - Purchase Return
+  summary: purchase return - approval all list
+  parameters:
+    - name: filter_like
+      in: query
+      schema:
+        type: string
+      example: '{"form.number": "PRETURN22120001"}'
+    - name: limit
+      in: query
+      schema:
+        type: integer
+      example: '10'
+    - name: page
+      in: query
+      schema:
+        type: integer
+      example: '1'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                type: object
+                properties:
+                  currentPage:
+                    type: integer
+                  lastPage:
+                    type: integer
+                  perPage:
+                    type: integer
+                  total:
+                    type: integer
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    purchaseInvoiceId:
+                      type: integer
+                    warehouseId:
+                      type: integer
+                    supplierId:
+                      type: integer
+                    supplierName:
+                      type: string
+                    supplierAddress:
+                      type: string
+                    supplierPhone:
+                      type: string
+                    amount:
+                      type: integer
+                    tax:
+                      type: integer
+                    last_request_date:
+                      type: string
+                    supplier:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        name:
+                          type: string
+                        address:
+                          type: string
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        country:
+                          type: string
+                        phone:
+                          type: string
+                        email:
+                          type: string
+                    items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          purchaseReturnId:
+                            type: integer
+                          purchaseInvoiceItemId:
+                            type: integer
+                          itemId:
+                            type: integer
+                          itemName:
+                            type: string
+                          expiryDate:
+                            type: string
+                          productionNumber:
+                            type: string
+                          quantityInvoice:
+                            type: integer
+                          quantity:
+                            type: integer
+                          price:
+                            type: integer
+                          discountPercent:
+                            type: integer
+                          discountValue:
+                            type: integer
+                          unit:
+                            type: string
+                          converter:
+                            type: integer
+                          notes:
+                            type: string
+                          allocationId:
+                            type: integer
+                          allocation:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                    form:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        branchId:
+                          type: integer
+                        date:
+                          type: string
+                        number:
+                          type: string
+                        editedNumber:
+                          type: string
+                        notes:
+                          type: string
+                        editedNotes:
+                          type: string
+                        createdBy:
+                          type: integer
+                        updatedBy:
+                          type: integer
+                        done:
+                          type: boolean
+                        incrementNumber:
+                          type: integer
+                        incrementGroup:
+                          type: integer
+                        formableId:
+                          type: integer
+                        formableType:
+                          type: string
+                        requestApprovalTo:
+                          type: integer
+                        approvalBy:
+                          type: integer
+                        approvalAt:
+                          type: string
+                        approvalReason:
+                          type: string
+                        approvalStatus:
+                          type: integer
+                        requestCancellationTo:
+                          type: integer
+                        requestCancellationBy:
+                          type: integer
+                        requestCancellationAt:
+                          type: string
+                        requestCancellationReason:
+                          type: string
+                        cancellationApprovalAt:
+                          type: string
+                        cancellationApprovalBy:
+                          type: integer
+                        cancellationApprovalReason:
+                          type: string
+                        cancellationStatus:
+                          type: integer
+                    purchaseInvoice:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        form:
+                          type: object
+                          properties:
+                            number:
+                              type: string
