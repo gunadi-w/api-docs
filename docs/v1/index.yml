@@ -193,3 +193,21 @@ paths:
     $ref: purchase/return/return_approval.yaml
   /purchase/return/approval/send:
     $ref: purchase/return/return_approval_send.yaml
+  /purchase/payment-order:
+    $ref: purchase/payment-order/payment-order.yaml
+  /purchase/payment-order/{id}:
+    $ref: purchase/payment-order/payment-order_id.yaml
+  /purchase/payment-order/{id}/approve:
+    $ref: purchase/payment-order/payment-order_id_approve.yaml
+  /purchase/payment-order/{id}/reject:
+    $ref: purchase/payment-order/payment-order_id_reject.yaml
+  /purchase/payment-order/{id}/cancellation-approve:
+    $ref: purchase/payment-order/payment-order_id_cancellation_approve.yaml
+  /purchase/payment-order/{id}/cancellation-reject:
+    $ref: purchase/payment-order/payment-order_id_cancellation_reject.yaml
+  /purchase/payment-order/{id}/histories:
+    $ref: purchase/payment-order/payment-order_id_histories.yaml
+  /purchase/payment-order/approval:
+    $ref: purchase/payment-order/payment-order_approval.yaml
+  /purchase/payment-order/approval/send:
+    $ref: purchase/payment-order/payment-order_approval_send.yaml
