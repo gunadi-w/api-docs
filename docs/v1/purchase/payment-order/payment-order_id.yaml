@@ -1,0 +1,456 @@
+get:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - show
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: purchase payment order id
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  paymentType:
+                    type: string
+                  supplierId:
+                    type: integer
+                  supplierName:
+                    type: string
+                  amount:
+                    type: integer
+                  supplier:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      code:
+                        type: string
+                      name:
+                        type: string
+                      address:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      country:
+                        type: string
+                      phone:
+                        type: string
+                      email:
+                        type: string
+                  invoices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                        form:
+                          type: object
+                          properties:
+                            date:
+                              type: string 
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                  downPayments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                        form:
+                          type: object
+                          properties:
+                            date:
+                              type: string 
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                  returns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        available:
+                          type: integer
+                        amount:
+                          type: integer
+                        referenceableId:
+                          type: integer
+                        referenceableType:
+                          type: string
+                        form:
+                          type: object
+                          properties:
+                            date:
+                              type: string 
+                            number:
+                              type: string
+                            notes:
+                              type: string
+                  others:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        purchasePaymentOrderId:
+                          type: integer
+                        amount:
+                          type: integer
+                        chartOfAccountId:
+                          type: integer
+                        allocationId:
+                          type: integer
+                        notes:
+                          type: string
+                        chartOfAccount:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            number:
+                              type: string
+                            name:
+                              type: string
+                            alias:
+                              type: string
+                        allocation:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            code:
+                              type: string
+                            name:
+                              type: string
+                  form:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      branchId:
+                        type: integer
+                      date:
+                        type: string
+                      number:
+                        type: string
+                      editedNumber:
+                        type: string
+                      notes:
+                        type: string
+                      editedNotes:
+                        type: string
+                      createdBy:
+                        type: integer
+                      updatedBy:
+                        type: integer
+                      done:
+                        type: boolean
+                      incrementNumber:
+                        type: integer
+                      incrementGroup:
+                        type: integer
+                      formableId:
+                        type: integer
+                      formableType:
+                        type: string
+                      requestApprovalTo:
+                        type: integer
+                      approvalBy:
+                        type: integer
+                      approvalAt:
+                        type: string
+                      approvalReason:
+                        type: string
+                      approvalStatus:
+                        type: integer
+                      requestCancellationTo:
+                        type: integer
+                      requestCancellationBy:
+                        type: integer
+                      requestCancellationAt:
+                        type: string
+                      requestCancellationReason:
+                        type: string
+                      cancellationApprovalAt:
+                        type: string
+                      cancellationApprovalBy:
+                        type: integer
+                      cancellationApprovalReason:
+                        type: string
+                      cancellationStatus:
+                        type: integer
+patch:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - update
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      example: 1
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - paymentType
+            - supplierId
+            - date
+            - invoices
+            - requestApprovalTo
+            - totalInvoiceAmount
+            - totalDownPaymentAmount
+            - totalReturnAmount
+            - totalOtherAmount
+            - totalAmount
+          properties:
+            paymentType:
+              type: string
+            supplierId:
+              type: integer
+            date:
+              type: string
+            invoices:
+              type: array
+              items:
+                type: object
+                required:
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            downPayments:
+              type: array
+              items:
+                type: object
+                required:
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            returns:
+              type: array
+              items:
+                type: object
+                required:
+                  - amount
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+            others:
+              type: array
+              items:
+                type: object
+                required:
+                  - amount
+                  - coaId
+                properties:
+                  id:
+                    type: integer
+                  amount:
+                    type: integer
+                  coaId:
+                    type: integer
+                  notes:
+                    type: string
+                  allocationId:
+                    type: integer
+            notes:
+              type: string
+            requestApprovalTo:
+              type: integer
+            totalInvoiceAmount:
+              type: integer
+            totalDownPaymentAmount:
+              type: integer
+            totalReturnAmount:
+              type: integer
+            totalOtherAmount:
+              type: integer
+            totalAmount:
+              type: integer
+  responses:
+    '201':
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  paymentType:
+                    type: string
+                  supplierId:
+                    type: integer
+                  supplierName:
+                    type: string
+                  amount:
+                    type: integer
+                  invoices:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          purchasePaymentOrderId:
+                            type: integer
+                          available:
+                            type: integer
+                          amount:
+                            type: integer
+                          referenceableId:
+                            type: integer
+                          referenceableType:
+                            type: string
+                  downPayments:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          purchasePaymentOrderId:
+                            type: integer
+                          available:
+                            type: integer
+                          amount:
+                            type: integer
+                          referenceableId:
+                            type: integer
+                          referenceableType:
+                            type: string
+                  returns:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          purchasePaymentOrderId:
+                            type: integer
+                          available:
+                            type: integer
+                          amount:
+                            type: integer
+                          referenceableId:
+                            type: integer
+                          referenceableType:
+                            type: string
+                  others:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          purchasePaymentOrderId:
+                            type: integer
+                          amount:
+                            type: integer
+                          chartOfAccountId:
+                            type: integer
+                          allocationId:
+                            type: integer
+                          notes:
+                            type: string
+                  form:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      branchId:
+                        type: integer
+                      date:
+                        type: string
+                      number:
+                        type: string
+                      notes:
+                        type: string
+                      createdBy:
+                        type: integer
+                      updatedBy:
+                        type: integer
+                      done:
+                        type: boolean
+                      incrementNumber:
+                        type: integer
+                      incrementGroup:
+                        type: integer
+                      formableId:
+                        type: integer
+                      formableType:
+                        type: string
+                      requestApprovalTo:
+                        type: integer
+                      approvalStatus:
+                        type: integer
+delete:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - delete
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 1
+  responses:
+    '204':
+      description: Deleted

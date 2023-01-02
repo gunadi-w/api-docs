@@ -1,0 +1,62 @@
+get:
+  tags:
+    - Purchase Payment Order
+  summary: purchase payment order - show histories
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 1
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                type: object
+                properties:
+                  currentPage:
+                    type: integer
+                  lastPage:
+                    type: integer
+                  perPage:
+                    type: integer
+                  total:
+                    type: integer
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    tableType:
+                      type: string
+                    tableId:
+                      type: integer
+                    number:
+                      type: string
+                    date:
+                      type: string
+                    userId:
+                      type: integer
+                    activity:
+                      type: string
+                    formableId:
+                      type: integer
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        firstName:
+                          type: string
+                        lastName:
+                          type: string
+                        fullName:
+                          type: string
